@@ -81,7 +81,11 @@ DATABASES = {
         #     'read_default_file': 'my.cnf',
         # },
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+# <<<<<<< HEAD
         'NAME':'my_db',
+# # =======
+#         'NAME':'shop_db2',
+# # >>>>>>> bc65a24b008b8b8463de5502abfcdf87bb321000
         'USER':'root',
         'PASSWORD':'root',
         # 'ENGINE': 'django.db.backends.sqlite3',
@@ -134,3 +138,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+from elasticsearch import Elasticsearch, RequestsHttpConnection
+
+ES_CLIENT = Elasticsearch(
+    ['http://127.0.0.1:9200/'],
+    connection_class=RequestsHttpConnection
+)
+ES_AUTOREFRESH = True
+LOGIN_URL='/shop/login/'
